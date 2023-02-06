@@ -33,7 +33,7 @@ class Header extends Component {
         <div data-testid="header-component" />
 
         <p data-testid="header-user-name">
-          {user}
+          { user }
 
         </p>
 
