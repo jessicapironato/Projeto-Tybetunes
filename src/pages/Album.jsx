@@ -39,8 +39,10 @@ class Album extends Component {
     }, async () => {
       await addSong(music);
       await this.getFavorites();
+      const favoritesSongs = await getFavoriteSongs();
       this.setState({
         loading: false,
+        favorites: favoritesSongs,
       });
     });
   };
@@ -50,9 +52,11 @@ class Album extends Component {
     const { match: { params: { id } } } = this.props;
     const albumFetch = await getMusics(id);
     const musics = albumFetch.filter((obj) => obj.kind === 'song');
+    const favoritesSongs = await getFavoriteSongs();
     this.setState({
       artistMusic: albumFetch[0],
       fullAlbum: musics,
+      favorites: favoritesSongs,
     });
   };
 
