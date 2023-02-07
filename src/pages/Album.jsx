@@ -3,17 +3,22 @@ import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import getMusics from '../services/musicsAPI';
 import MusicCard from '../components/MusicCard';
+// import { addSong } from '../services/favoriteSongsAPI';
 
 class Album extends Component {
   state = {
     artistMusic: {},
     fullAlbum: [],
+
   };
 
   componentDidMount() {
     this.fetch();
   }
 
+  // requisito 8
+
+  // requisito 7
   fetch = async () => {
     const { match: { params: { id } } } = this.props;
     const albumFetch = await getMusics(id);
@@ -40,8 +45,10 @@ class Album extends Component {
           { fullAlbum.map((music, index) => (
             <section key={ index }>
               <MusicCard
+                trackId={ music.trackId }
                 trackName={ music.trackName }
                 previewUrl={ music.previewUrl }
+                // handleChange={ this.}
               />
 
             </section>
